@@ -2,7 +2,7 @@
 name = "gestor-librerias"
 version = "1.0.0"
 description = "Gestor avanzado de verificación, instalación y auditoría de librerías Python"
-authors = [Distiem]
+authors = [{name = "Distiem"}]
 readme = "README.md"
 requires-python = ">=3.9"
 dependencies = []

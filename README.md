@@ -5,4 +5,4 @@ Herramienta profesional para verificar, instalar, actualizar y auditar librería
 ## Instalación
 
 ```bash
-pip install 
+pip install git+https://github.com/Distiem/pip-simple.git
