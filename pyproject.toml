@@ -1,0 +1,15 @@
+[project]
+name = "gestor-librerias"
+version = "1.0.0"
+description = "Gestor avanzado de verificación, instalación y auditoría de librerías Python"
+authors = [Distiem]
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = []
+
+[project.scripts]
+gestor-librerias = "gestor_librerias.core:main"
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
