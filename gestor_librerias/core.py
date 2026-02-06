@@ -3,7 +3,7 @@ import sys
 import json
 import urllib.request
 from pathlib import Path
-from datetime import datetime
+from datetime import datetime, timezone
 from dataclasses import dataclass
 from enum import Enum
 from typing import Dict, Optional, Tuple, List
@@ -45,7 +45,7 @@ class InfoLibreria:
 
     def __post_init__(self):
         if self.timestamp is None:
-            object.__setattr__(self, 'timestamp', datetime.utcnow().isoformat())
+            object.__setattr__(self, 'timestamp', datetime.now(timezone.utc).isoformat())
 
     def to_dict(self) -> dict:
         """Convierte la info a diccionario para JSON."""
@@ -546,3 +546,30 @@ if __name__ == "__main__":
     main("wheel", opcion="solo_ver", guardar_json="si")
 
 #ListarLibrerias.mostrar_resumen()
+#Luego lo mejoro xd, quiero dormir
+def verificar_desde_archivo(self, ruta_requirements: str, modo_str: str = "solo_ver"):
+    """
+    Lee un archivo requirements.txt y procesa cada librería.
+    """
+    ruta = Path(ruta_requirements)
+    if not ruta.exists():
+        print(f"❌ El archivo {ruta_requirements} no existe.")
+        return
+
+    # Convertimos el string de modo a la configuración adecuada
+    modo = Validador.obtener_modo(modo_str)
+    
+    with open(ruta, "r", encoding="utf-8") as f:
+        lineas = f.readlines()
+
+    print(f"📋 Procesando {len(lineas)} librerías desde {ruta_requirements}...\n")
+
+    for linea in lineas:
+        # Limpiamos la línea de espacios, saltos de página y comentarios
+        nombre = linea.strip().split('#')[0].split('==')[0].split('>=')[0].strip()
+        
+        if nombre:
+            # Usamos tu lógica existente
+            self.verificar(nombre, modo)
+
+    print(f"✅ Proceso de archivo finalizado el: {datetime.now(timezone.utc).isoformat()}")

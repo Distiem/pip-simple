@@ -1,6 +1,6 @@
 # Gestor Librerías
 
-Herramienta profesional para verificar, instalar, actualizar y auditar librerías Python con trazabilidad en JSON.
+Herramienta para verificar, instalar, actualizar y auditar librerías Python con trazabilidad en JSON.
 
 ## Instalación
 
